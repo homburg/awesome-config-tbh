@@ -420,7 +420,7 @@ autorunApps = {
 	"mount_dev",
 	"phpstorm6eap",
 	"gnome-terminal",
-	"pidgin",
+	-- "pidgin",
 	-- "thunderbird",
 	"google-chrome",
 	"gmail",

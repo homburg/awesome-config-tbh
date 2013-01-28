@@ -328,6 +328,11 @@ root.keys(globalkeys)
 -- }}}
 
 -- {{{ Rules
+--
+-- $ xprop WM_CLASS
+-- --> WM_CLASS(STRING) = "crx_pjkljhegncpnkpknbcohdijeoejaedia", "Google-chrome"
+-- instance = "crx_pjkljhegncpnkpknbcohdijeoejaedia"
+-- class = "Google-chrome"
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -343,32 +348,36 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
-	--
-	--   Spotify always on tab 4 (music)
-    { rule = { class = "spotify" },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2] } },
+	
+	-- Spotify always on tab 4 (music)
+    { rule = { class = "Spotify" },
     	properties = { tag = tags[1][4] } },
 
 	-- Chrome on tab 2 (web)
-    -- { rule = { class = "google-chrome" }, 
-    --   properties = { tag = tags[1][2] } },
+    { rule = { instance = "google-chrome" }, 
+      properties = { tag = tags[1][2] } },
+
+	-- Personal chrome instance on tab 7
+    { rule = { instance = "Google-chrome (/home/tbh/.config/google-chrome-thomas)" }, 
+      properties = { tag = tags[1][7] } },
 	
 	-- Gmail fullscreen on tag 3
-    -- { rule = { class = "crx_pjkljhegncpnkpknbcohdijeoejaedia" }, 
-    --   properties = { tag = tags[1][3] } },
+    { rule = { instance = "crx_pjkljhegncpnkpknbcohdijeoejaedia" }, 
+      properties = { tag = tags[1][3] } },
 	
 	-- Pidgin on tag 3
-    -- { rule = { class = "Pidgin" }, 
-    --   properties = { tag = tags[1][3] } },
+    { rule = { class = "Pidgin" }, 
+      properties = { tag = tags[1][3] } },
 
 	-- TODO: Pidgin messages on all tag 3
     -- { rule = { class = "Pidgin", role = "conversation" }, 
       -- properties = { tag = tags[1][1, 2, 3, 4, 5, 6, 7, 8, 9], floating = true } },
 
 	-- phpstorm on tag 1
-    -- { rule = { class = "jetbrains-phpstorm" }, 
-    --   properties = { tag = tags[1][1] } },
+    { rule = { class = "jetbrains-phpstorm" }, 
+      properties = { tag = tags[1][1] } }
 }
 
 -- }}}

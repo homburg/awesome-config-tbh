@@ -428,7 +428,7 @@ autorunApps = {
 	"google-chrome",
 	"gmail",
 	"bluetooth-applet",
-	"spotify",
+	-- "spotify",
 	"xmodmap ~/.Xmodmap"
 }
 

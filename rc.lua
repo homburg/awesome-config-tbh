@@ -254,7 +254,10 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+
+	-- My keybindings
+    awful.key({ modkey },            "e",     function () awful.util.spawn("xdg-open ~/") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -426,10 +429,11 @@ autorunApps = {
 	"gmail",
 	"bluetooth-applet",
 	"spotify",
+	"xmodmap ~/.Xmodmap"
 }
 
 for i,app in ipairs(autorunApps) do
-	awful.util.spawn(app)
+	awful.util.spawn_with_shell(app)
 end
 
 -- screen: multiple monitors

@@ -38,7 +38,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init("/home/tbh/.config/awesome/themes/wwii.lua")
+beautiful.init("/home/tbh/.config/awesome/themes/bamboo/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -75,7 +75,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "work", "web", "messages", "music", 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ "clean", "code", "web", "mysql", "messages", "music", 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -257,7 +257,7 @@ globalkeys = awful.util.table.join(
               end),
 
 	-- My keybindings
-    awful.key({ modkey },            "e",     function () awful.util.spawn("xdg-open ~/") end)
+    awful.key({ modkey },            "e",     function () awful.util.spawn("thunar") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -352,15 +352,15 @@ awful.rules.rules = {
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     { rule = { class = "Firefox" },
-      properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][3] } },
 	
 	-- Spotify always on tab 4 (music)
     { rule = { class = "Spotify" },
-    	properties = { tag = tags[1][4] } },
+    	properties = { tag = tags[1][6] } },
 
 	-- Chrome on tab 2 (web)
     { rule = { instance = "google-chrome" }, 
-      properties = { tag = tags[1][2] } },
+      properties = { tag = tags[1][3] } },
 
 	-- Personal chrome instance on tab 7
     { rule = { instance = "Google-chrome (/home/tbh/.config/google-chrome-thomas)" }, 
@@ -368,11 +368,11 @@ awful.rules.rules = {
 	
 	-- Gmail fullscreen on tag 3
     { rule = { instance = "crx_pjkljhegncpnkpknbcohdijeoejaedia" }, 
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[1][5] } },
 	
 	-- Pidgin on tag 3
     { rule = { class = "Pidgin" }, 
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[1][5] } },
 
 	-- TODO: Pidgin messages on all tag 3
     -- { rule = { class = "Pidgin", role = "conversation" }, 
@@ -380,7 +380,7 @@ awful.rules.rules = {
 
 	-- phpstorm on tag 1
     { rule = { class = "jetbrains-phpstorm" }, 
-      properties = { tag = tags[1][1] } }
+      properties = { tag = tags[1][2] } }
 }
 
 -- }}}
@@ -421,9 +421,9 @@ autorunApps = {
 	"eval `gnome-keyring`",
 	"synergys",
 	"mount_dev",
-	"phpstorm6eap",
+	"phpstorm",
 	"gnome-terminal",
-	-- "pidgin",
+	"pidgin",
 	-- "thunderbird",
 	"google-chrome",
 	"gmail",
@@ -441,8 +441,8 @@ end
 -- guiAutorunApps = {
 -- 	{"phpstorm", 1},
 -- 	{"gnome-terminal", 1},
--- 	-- {"google-chrome", 2},
--- 	-- {"thunderbird", 3},
--- 	-- {"pidgin", 3},
--- 	-- {"spotify", 4},
+-- 	{"google-chrome", 2},
+-- 	{"thunderbird", 3},
+-- 	{"pidgin", 3},
+-- 	{"spotify", 4},
 -- }

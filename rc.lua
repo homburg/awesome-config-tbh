@@ -230,7 +230,6 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "g", function () awful.util.spawn("google-chrome") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -257,7 +256,8 @@ globalkeys = awful.util.table.join(
               end),
 
 	-- My keybindings
-    awful.key({ modkey },            "e",     function () awful.util.spawn("thunar") end)
+    awful.key({ modkey },            "e",     function () awful.util.spawn("thunar") end),
+    awful.key({ modkey,           }, "g", function () awful.util.spawn("google-chrome") end)
 )
 
 clientkeys = awful.util.table.join(
@@ -366,12 +366,16 @@ awful.rules.rules = {
     { rule = { instance = "Google-chrome (/home/tbh/.config/google-chrome-thomas)" }, 
       properties = { tag = tags[1][7] } },
 	
-	-- Gmail fullscreen on tag 3
+	-- Gmail fullscreen on tag 5
     { rule = { instance = "crx_pjkljhegncpnkpknbcohdijeoejaedia" }, 
       properties = { tag = tags[1][5] } },
 	
-	-- Pidgin on tag 3
+	-- Pidgin on tag 5
     { rule = { class = "Pidgin" }, 
+      properties = { tag = tags[1][5] } },
+
+	-- Xchat on tag 5
+    { rule = { class = "Xchat" }, 
       properties = { tag = tags[1][5] } },
 
 	-- TODO: Pidgin messages on all tag 3
@@ -429,7 +433,8 @@ autorunApps = {
 	"gmail",
 	"bluetooth-applet",
 	-- "spotify",
-	"xmodmap ~/.Xmodmap"
+	"xmodmap ~/.Xmodmap",
+	"xchat" 
 }
 
 for i,app in ipairs(autorunApps) do

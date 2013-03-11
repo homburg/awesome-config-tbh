@@ -382,7 +382,7 @@ awful.rules.rules = {
     -- { rule = { class = "Pidgin", role = "conversation" }, 
       -- properties = { tag = tags[1][1, 2, 3, 4, 5, 6, 7, 8, 9], floating = true } },
 
-	-- phpstorm on tag 1
+	-- phpstorm on tag 2
     { rule = { class = "jetbrains-phpstorm" }, 
       properties = { tag = tags[1][2] } }
 }
@@ -434,7 +434,8 @@ autorunApps = {
 	"bluetooth-applet",
 	-- "spotify",
 	"xmodmap ~/.Xmodmap",
-	"xchat" 
+	"xchat" ,
+	"dropbox start"
 }
 
 for i,app in ipairs(autorunApps) do

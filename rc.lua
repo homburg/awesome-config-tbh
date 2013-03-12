@@ -75,7 +75,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "clean", "code", "web", "mysql", "messages", "music", 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ "clean", "code", "web", "mysql", "im", "mail", 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -350,31 +350,28 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+
     -- Set Firefox to always map on tags number 2 of screen 1.
     { rule = { class = "Firefox" },
       properties = { tag = tags[1][3] } },
 	
-	-- Spotify always on tab 4 (music)
-    { rule = { class = "Spotify" },
-    	properties = { tag = tags[1][6] } },
-
-	-- Chrome on tab 2 (web)
+	-- Chrome on tab 3 (web)
     { rule = { instance = "google-chrome" }, 
       properties = { tag = tags[1][3] } },
 
-	-- Personal chrome instance on tab 7
+	-- Personal chrome instance on tag 7
     { rule = { instance = "Google-chrome (/home/tbh/.config/google-chrome-thomas)" }, 
       properties = { tag = tags[1][7] } },
 	
-	-- Gmail fullscreen on tag 5
+	-- Gmail fullscreen on tag "mail"
     { rule = { instance = "crx_pjkljhegncpnkpknbcohdijeoejaedia" }, 
-      properties = { tag = tags[1][5] } },
+      properties = { tag = tags[1][6] } },
 	
-	-- Pidgin on tag 5
+	-- Pidgin on tag "im"
     { rule = { class = "Pidgin" }, 
       properties = { tag = tags[1][5] } },
 
-	-- Xchat on tag 5
+	-- Xchat on tag "im"
     { rule = { class = "Xchat" }, 
       properties = { tag = tags[1][5] } },
 
@@ -422,7 +419,7 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 
 autorunApps = {
 	"gnome-settings-daemon",
-	"eval `gnome-keyring`",
+	"eval `gnome-keyring-daemon`",
 	"synergys",
 	"mount_dev",
 	"phpstorm",

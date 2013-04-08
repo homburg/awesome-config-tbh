@@ -417,35 +417,25 @@ client.add_signal("focus", function(c) c.border_color = beautiful.border_focus e
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+HOME = os.getenv("HOME")
 autorunApps = {
 	"gnome-settings-daemon",
 	"eval `gnome-keyring-daemon`",
 	"synergys",
 	"mount_dev",
-	"phpstorm",
+	-- "phpstorm",
 	"gnome-terminal",
 	"pidgin",
-	-- "thunderbird",
 	"google-chrome",
 	"gmail",
 	"bluetooth-applet",
-	-- "spotify",
-	"xmodmap ~/.Xmodmap",
 	"xchat" ,
-	"dropbox start"
+	"dropbox start",
 }
 
 for i,app in ipairs(autorunApps) do
 	awful.util.spawn_with_shell(app)
 end
 
--- screen: multiple monitors
--- tags: Meta+1, Meta+2, etc
--- guiAutorunApps = {
--- 	{"phpstorm", 1},
--- 	{"gnome-terminal", 1},
--- 	{"google-chrome", 2},
--- 	{"thunderbird", 3},
--- 	{"pidgin", 3},
--- 	{"spotify", 4},
--- }
+awful.util.spawn("xmodmap /home/tbh/.Xmodmap")
+awful.util.spawn("xmodmap /home/tbh/my_xmodmap_settings")

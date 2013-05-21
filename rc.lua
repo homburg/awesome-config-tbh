@@ -356,6 +356,8 @@ awful.rules.rules = {
       properties = { tag = tags[1][3] } },
 	
 	-- Chrome on tab 3 (web)
+	-- TODO: Exclude dialogs:
+	--    _NET_WM_WINDOW_TYPE(ATOM) = _NET_WM_WINDOW_TYPE_DIALOG
     { rule = { instance = "google-chrome" }, 
       properties = { tag = tags[1][3] } },
 

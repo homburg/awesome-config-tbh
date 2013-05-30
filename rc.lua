@@ -38,7 +38,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init("/home/tbh/.config/awesome/themes/bamboo/theme.lua")
+beautiful.init("/home/tbh/.config/awesome/themes/brown/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
@@ -434,6 +434,3 @@ autorunApps = {
 for i,app in ipairs(autorunApps) do
 	awful.util.spawn_with_shell(app)
 end
-
-awful.util.spawn("xmodmap /home/tbh/.Xmodmap")
-awful.util.spawn("xmodmap /home/tbh/my_xmodmap_settings")

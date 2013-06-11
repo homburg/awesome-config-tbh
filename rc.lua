@@ -70,12 +70,19 @@ layouts =
 }
 -- }}}
 
+tag_clean   =   1
+tag_code    =   2
+tag_web     =   3
+tag_mail    =   4
+tag_im      =   5
+tag_mysql   =   6
+
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "clean", "code", "web", "mysql", "im", "mail", 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ tag_clean, tag_code, tag_web, tag_mail, tag_im, tag_mysql, 7, 8, 9 }, s, layouts[1])
 end
 -- }}}
 
@@ -384,15 +391,15 @@ awful.rules.rules = {
 	
 	-- Gmail fullscreen on tag "mail"
     { rule = { instance = "crx_pjkljhegncpnkpknbcohdijeoejaedia" }, 
-      properties = { tag = tags[1][6] } },
+      properties = { tag = tags[1][tag_mail] } },
 	
 	-- Pidgin on tag "im"
     { rule = { class = "Pidgin" }, 
-      properties = { tag = tags[1][5] } },
+      properties = { tag = tags[1][tag_im] } },
 
 	-- Xchat on tag "im"
     { rule = { class = "Xchat" }, 
-      properties = { tag = tags[1][5] } },
+      properties = { tag = tags[1][tag_im] } },
 
 	-- TODO: Pidgin messages on all tag 3
     -- { rule = { class = "Pidgin", role = "conversation" }, 
@@ -400,7 +407,11 @@ awful.rules.rules = {
 
 	-- phpstorm on tag 2
     { rule = { class = "jetbrains-phpstorm" }, 
-      properties = { tag = tags[1][2] } }
+      properties = { tag = tags[1][tag_code] } },
+
+	-- pycharm on tag 2
+    { rule = { class = "jetbrains-pycharm" }, 
+      properties = { tag = tags[1][tag_code] } }
 }
 
 -- }}}

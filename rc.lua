@@ -397,10 +397,6 @@ awful.rules.rules = {
     { rule = { class = "Pidgin" }, 
       properties = { tag = tags[1][tag_im] } },
 
-	-- Xchat on tag "im"
-    { rule = { class = "Xchat" }, 
-      properties = { tag = tags[1][tag_im] } },
-
 	-- TODO: Pidgin messages on all tag 3
     -- { rule = { class = "Pidgin", role = "conversation" }, 
       -- properties = { tag = tags[1][1, 2, 3, 4, 5, 6, 7, 8, 9], floating = true } },
@@ -459,7 +455,6 @@ autorunApps = {
 	"google-chrome",
 	"gmail",
 	"bluetooth-applet",
-	"xchat" ,
 	"dropbox start",
 }
 

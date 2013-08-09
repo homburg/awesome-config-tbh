@@ -1,4 +1,5 @@
 -- Standard awesome library
+-- vim: set ts=4 noexpandtab :
 require("awful")
 require("awful.autofocus")
 require("awful.rules")
@@ -361,9 +362,7 @@ root.keys(globalkeys)
 -- {{{ Rules
 --
 -- $ xprop WM_CLASS
--- --> WM_CLASS(STRING) = "crx_pjkljhegncpnkpknbcohdijeoejaedia", "Google-chrome"
--- instance = "crx_pjkljhegncpnkpknbcohdijeoejaedia"
--- class = "Google-chrome"
+-- http://awesome.naquadah.org/wiki/Understanding_Rules
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -381,9 +380,17 @@ awful.rules.rules = {
 
 	-- Chrome on tab 3 (web)
 	-- TODO: Exclude dialogs:
+	--    _NET_WM_WINDOW_TYPE(ATOM) = _NET_WM_WINDOW_TYPE_NORMAL
 	--    _NET_WM_WINDOW_TYPE(ATOM) = _NET_WM_WINDOW_TYPE_DIALOG
-    { rule = { instance = "google-chrome" }, 
-      properties = { tag = tags[1][3] } },
+    {
+		rule = {
+			instance = "google-chrome",
+			type = "normal" -- Do not match alerts (dialog), etc.
+		}, 
+		properties = {
+			tag = tags[1][3]
+		}
+	},
 
 	-- Personal chrome instance on tag 7
     { rule = { instance = "Google-chrome (/home/tbh/.config/google-chrome-thomas)" }, 
@@ -394,20 +401,36 @@ awful.rules.rules = {
       properties = { tag = tags[1][tag_mail] } },
 	
 	-- Pidgin on tag "im"
-    { rule = { class = "Pidgin" }, 
-      properties = { tag = tags[1][tag_im] } },
-
-	-- TODO: Pidgin messages on all tag 3
-    -- { rule = { class = "Pidgin", role = "conversation" }, 
-      -- properties = { tag = tags[1][1, 2, 3, 4, 5, 6, 7, 8, 9], floating = true } },
+	{
+		rule = {
+			class = "Pidgin"
+		}, 
+		properties = {
+			tag = tags[1][tag_im]
+		}
+	},
 
 	-- phpstorm on tag 2
-    { rule = { class = "jetbrains-phpstorm" }, 
-      properties = { tag = tags[1][tag_code] } },
+	{
+		rule = {
+			class = "jetbrains-phpstorm",
+			name = "PhpStorm" -- sub-string match the main phpstorm window
+		}, 
+		properties = {
+		  tag = tags[1][tag_code]
+		}
+	},
 
 	-- pycharm on tag 2
-    { rule = { class = "jetbrains-pycharm" }, 
-      properties = { tag = tags[1][tag_code] } }
+	{
+		rule = {
+			class = "jetbrains-pycharm",
+			name = "PyCharm" -- sub-string match the main pycharm window
+		}, 
+		properties = {
+			tag = tags[1][tag_code]
+		}
+	}
 }
 
 -- }}}
